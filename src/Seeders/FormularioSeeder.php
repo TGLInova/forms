@@ -3,8 +3,6 @@
 namespace TglInova\Forms\Seeders;
 
 use Illuminate\Database\Seeder;
-use TglInova\Forms\Livewire\Components\SeguroAuto;
-use TglInova\Forms\Livewire\Components\SeguroVida;
 use TglInova\Forms\Models\Formulario;
 
 class FormularioSeeder extends Seeder
@@ -12,8 +10,21 @@ class FormularioSeeder extends Seeder
     public function run(): void
     {
         $formularios = [
-            1 => ['nome' => 'Seguro Auto', 'componente' => SeguroAuto::class],
-            2 => ['nome' => 'Seguro de Vida', 'componente' => SeguroVida::class],
+            1 => [
+                'nome' => 'Seguro Auto',
+                'descricao' => "Dirija com Tranquilidade e Segurança.\n\nAtravés deste formulário online, você poderá solicitar a sua cotação de seguro de forma rápida e segura, sem precisar se deslocar até o nosso escritório. Preencha todos os campos com atenção e informe os dados do seu veículo e seus dados pessoais.",
+                'componente' => \TglInova\Forms\Livewire\Components\SeguroAuto::class,
+                'apresentador' => \Tglinova\Forms\Filament\Presenters\SeguroAuto::class,
+            ],
+            2 => [
+                'nome' => 'Seguro Saúde',
+                'descricao' => <<<HTML
+                    Para garantir uma conversa mais direta e alinhada com o que você realmente precisa, pedimos que preencha este formulário com algumas informações básicas sobre os beneficiários que farão parte da proposta.\n\nEssas informações permitirão que nossa especialista compreenda melhor o seu perfil e indique as opções de seguro saúde mais compatíveis com sua realidade e expectativas.\n\nSinta-se à vontade para responder com calma. Todos os dados serão mantidos em sigilo absoluto e utilizados apenas para fins de atendimento personalizado.
+                HTML,
+                'componente' => \TglInova\Forms\Livewire\Components\SeguroSaude::class,
+                'apresentador' => \Tglinova\Forms\Filament\Presenters\SeguroSaude::class,
+                // 'apresentador' => 
+            ],
         ];
 
         foreach ($formularios as $id => $item) {

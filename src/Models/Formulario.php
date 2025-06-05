@@ -11,7 +11,7 @@ class Formulario extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['nome', 'descricao', 'componente', 'campos'];
+    protected $fillable = ['nome', 'descricao', 'componente', 'apresentador'];
 
     public function casts(): array
     {

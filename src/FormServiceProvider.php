@@ -11,7 +11,7 @@ use Illuminate\View\Compilers\BladeCompiler;
 class FormServiceProvider extends ServiceProvider
 {
     protected array $components = [
-        'seguro-vida' => \TglInova\Forms\Livewire\Components\SeguroVida::class,
+        'seguro-saude' => \TglInova\Forms\Livewire\Components\SeguroSaude::class,
         'seguro-auto' => \TglInova\Forms\Livewire\Components\SeguroAuto::class,
     ];
 
