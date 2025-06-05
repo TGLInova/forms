@@ -1,0 +1,18 @@
+{
+    "name": "tglinova/forms",
+    "description": "Um conjunto de formulários de seguros e benefícios",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Tglinova\\Forms\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "wallacemaxters",
+            "email": "wallacemaxters@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}

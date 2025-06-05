@@ -2,9 +2,11 @@
 
 namespace TglInova\Forms;
 
+use Illuminate\Support\Facades\Blade;
+use Livewire\Livewire;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
-use Livewire\Livewire;
 
 class FormServiceProvider extends ServiceProvider
 {
@@ -21,9 +23,9 @@ class FormServiceProvider extends ServiceProvider
     public function register()
     {
 
-        $this->mergeConfigFrom(__DIR__ . '/../config/tglinova_forms.php', 'tglinova_forms');
+        $this->setupConfig();
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'tglinova_forms');
+        $this->setupViews();
 
         $this->callAfterResolving(BladeCompiler::class, function () {
 
@@ -35,6 +37,10 @@ class FormServiceProvider extends ServiceProvider
 
                 Livewire::component($fullname, $component);
             }
+
+            Route::middleware('web')
+                ->prefix($config['route_prefix'])
+                ->group(__DIR__ . '/../routes/web.php');
         });
     }
 
@@ -47,5 +53,29 @@ class FormServiceProvider extends ServiceProvider
         $this->publishesMigrations([
             $path => database_path('migrations'),
         ]);
+    }
+
+    protected function setupConfig()
+    {
+        $path = __DIR__ . '/../config/tglinova_forms.php';
+
+        $this->mergeConfigFrom($path, 'tglinova_forms');
+
+        $this->publishes([
+            $path => config_path('tglinova_forms.php')
+        ], 'tglinova-forms-config');
+    }
+
+    protected function setupViews()
+    {
+        $path = __DIR__ . '/../resources/views';
+
+        $this->loadViewsFrom($path, 'tglinova_forms');
+
+        Blade::anonymousComponentPath($path . '/components', 'tglinova-forms');
+
+        $this->publishes([
+            $path => resource_path('views/vendor/tglinova_forms'),
+        ], 'tglinova-forms-view');
     }
 }

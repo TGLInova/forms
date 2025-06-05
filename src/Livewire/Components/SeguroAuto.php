@@ -15,7 +15,6 @@ class SeguroAuto extends FormularioBase
     public array $arquivos = ['anexo' => null];
 
     public int $passo = 1;
-
     public int $ultimoPasso = 5;
 
     public function validacaoPasso(): array

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 200);
             $table->string('descricao', 400)->nullable();
+            $table->json('campos')->nullable();
             $table->string('componente', 100)->nullable();
             $table->timestamps();
             $table->softDeletes();

@@ -139,13 +139,8 @@
             <x-mary-button class="btn-primary" label="Concluir" wire:click="proximoPasso" />
         </x-mary-step>
     </x-mary-steps>
-    <x-mary-modal wire:model="sucesso" title="Hey" class="backdrop-blur">
-        Press `ESC`, click outside or click `CANCEL` to close.
 
-        <x-slot:actions>
-            <x-button label="Cancel" @click="$wire.myModal1 = false" />
-        </x-slot:actions>
-    </x-mary-modal>
+    <x-tglinova-forms::success-message wire:model="sucesso" />
 </div>
 
 @script

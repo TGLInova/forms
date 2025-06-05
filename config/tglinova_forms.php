@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'prefix' => 'tglinova-'
+    'prefix'       => 'tglinova-',
+    'route_prefix' => 'formulario',
 ];
