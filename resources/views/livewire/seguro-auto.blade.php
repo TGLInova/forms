@@ -1,144 +1,166 @@
-<x-mary-steps wire:model="passo" steps-color="step-primary" stepper-classes="w-full mb-12">
-    <x-mary-step text="" :step="1" class="space-y-6">
-        <x-mary-input maxlength="100" required wire:model="dados.nome" name="dados.nome" type="text"
-            placeholder="Nome Completo" />
+<div>
+    <x-mary-steps wire:model="passo" steps-color="step-primary" stepper-classes="w-full mb-12">
+        <x-mary-step text="" :step="1" class="space-y-6">
+            <x-mary-input maxlength="100" required wire:model="dados.nome" name="dados.nome" type="text"
+                placeholder="Nome Completo" />
 
-        <x-mary-input type="tel" placeholder="CPF" wire:model="dados.cpf" name="dados.cpf"
-            x-mask="999.999.999-99" />
+            <x-mary-input type="tel" placeholder="CPF" wire:model="dados.cpf" name="dados.cpf"
+                x-mask="999.999.999-99" />
 
-        <div class="grid lg:grid-cols-2 lg:gap-8">
-            <x-mary-input type="tel" required placeholder='Celular' x-mask="(99) 99999-9999" maxlength="15"
-                wire:model="dados.celular" name="dados.celular" icon="heroicon.o-device-phone-mobile">
+            <div class="grid lg:grid-cols-2 lg:gap-8">
+                <x-mary-input type="tel" required placeholder='Celular' x-mask="(99) 99999-9999" maxlength="15"
+                    wire:model="dados.celular" name="dados.celular" icon="heroicon.o-device-phone-mobile">
 
-            </x-mary-input>
-            <x-mary-input type="tel" placeholder='Telefone' x-mask="(99) 9999-9999" maxlength="15"
-                wire:model="dados.telefone" name="dados.telefone" icon="heroicon.o-phone" />
-        </div>
-
-        <x-mary-input type="email" required placeholder='E-mail' wire:model="dados.email" name="dados.email"
-            icon="heroicon.o-envelope" />
-
-        <x-mary-button class="btn-primary" label="Avançar" wire:click="proximoPasso" />
-    </x-mary-step>
-
-    <x-mary-step text="" :step="2" theme="outlined-var" class="space-y-6" wire:submit.prevent="toStep3()"
-        wire:key="step-2">
-
-        <x-mary-input required type="text" label="Qual é a sua Data de Nascimento?"
-            wire:model="dados.data_nascimento" x-mask="99/99/9999" maxlength="10" name="dados.data_nascimento"
-            icon="heroicon.o-calendar" />
-
-        <div>
-            <div class="font-bold text-sm">
-                Qual seu Estado Civil?
+                </x-mary-input>
+                <x-mary-input type="tel" placeholder='Telefone' x-mask="(99) 9999-9999" maxlength="15"
+                    wire:model="dados.telefone" name="dados.telefone" icon="heroicon.o-phone" />
             </div>
 
-            <x-mary-group wire:model="dados.estado_civil" option-value="value" option-label="label" :options="TglInova\Forms\Enums\EstadoCivil::getLabels()" />
-        </div>
+            <x-mary-input type="email" required placeholder='E-mail' wire:model="dados.email" name="dados.email"
+                icon="heroicon.o-envelope" />
 
-        <x-mary-input maxlength="25" required wire:model="dados.profession" label="Qual é a sua Profissão?" />
+            <x-mary-button class="btn-primary" label="Avançar" wire:click="proximoPasso" />
+        </x-mary-step>
 
+        <x-mary-step text="" :step="2" class="space-y-6" wire:submit.prevent="toStep3()"
+            wire:key="step-2">
 
-        <x-mary-button class="btn-primary" label="Avançar" on-back-click="$set('step', 1)" />
+            <x-mary-input required type="text" label="Qual é a sua Data de Nascimento?"
+                wire:model="dados.data_nascimento" x-mask="99/99/9999" maxlength="10" name="dados.data_nascimento"
+                icon="heroicon.o-calendar" />
 
-    </x-mary-step>
-
-    <x-mary-step text="" :step="3" theme="outlined-var" class="space-y-6" wire:submit.prevent="toStep4()"
-        wire:key="step-3" wire:transition.opacity.duration.800ms>
-
-        <div class="grid lg:grid-cols-4 gap-4">
             <div>
-                <x-mary-input x-on:change="$event.target.value && $wire.onCepChange($event.target.value)" label="CEP"
-                    wire:model="dados.cep" x-mask="99.999-999" />
+                <div class="font-bold text-sm">
+                    Qual seu Estado Civil?
+                </div>
+
+                <x-mary-group wire:model="dados.estado_civil" option-value="value" option-label="label"
+                    :options="TglInova\Forms\Enums\EstadoCivil::getLabels()" />
             </div>
-            <div class="lg:col-span-3">
-                <x-mary-input wire:target="onCepChange" wire:loading.attr="disabled" placeholder="Rua Exemplo" required
-                    type="text" label="Endereço Completo" name="dados.address" wire:model="dados.address" />
-            </div>
-        </div>
 
-        <x-mary-input label="Condutor Principal do Veículo (quem dirige 85% do tempo)?" name="dados.main_vehicle_driver"
-            wire:model="dados.main_vehicle_driver" />
+            <x-mary-input maxlength="25" required wire:model="dados.profissao" label="Qual é a sua Profissão?" />
 
-        <x-mary-button class="btn-primary" label="Avançar" on-back-click="$set('step', 2)" />
-    </x-mary-step>
+            <x-mary-button class="btn-primary" label="Avançar" wire:click="proximoPasso" />
 
-    <x-mary-step text="" :step="4" class="grid space-y-6" wire:submit="toStep5" wire:key="step-4">
+        </x-mary-step>
 
-        <x-mary-toggle name="dados.work_garage" wire:model="dados.work_garage">
-            Garagem para o veículo no trabalho?
-        </x-mary-toggle>
+        <x-mary-step text="" :step="3" class="space-y-6" wire:submit.prevent="toStep4()"
+            wire:key="step-3" wire:transition.opacity.duration.800ms>
 
-        <x-mary-toggle name="dados.residence_garage" wire:model.live="dados.residence_garage">
-            Garagem para o veículo na residência?
-        </x-mary-toggle>
+            <fieldset class="grid lg:grid-cols-4 gap-4">
+                <div>
+                    <x-mary-input x-on:change="$event.target.value && $js.pesquisarCep($event.target.value)"
+                        label="CEP" wire:model="dados.endereco_cep" x-mask="99.999-999" required />
+                </div>
+                <div class="lg:col-span-2">
+                    <x-mary-input wire:loading.attr="disabled" placeholder="Rua Exemplo" required type="text"
+                        label="Logradouro" name="dados.endereco_logradouro" wire:model="dados.endereco_logradouro" />
+                </div>
 
-        @if (isset($form['residence_garage']) && $form['residence_garage'])
-            <div>
-                <div class="font-bold text-sm">Casa ou Apartamento?</div>
-                @foreach (['C' => 'Casa', 'A' => 'Apartamento'] as $k => $v)
-                    <x-radio :value="$k" label="Casa ou apartamento" wire:model="dados.house_or_apartment"
-                        name="dados.house_or_apartment">{!! $v !!}</x-radio>
-                @endforeach
-            </div>
-        @endif
+                <x-mary-input wire:loading.attr="disabled" type="text" label="Nº" name="dados.endereco_numero"
+                    wire:model="dados.endereco_numero" />
 
-        <x-mary-toggle name="dados.college_garage" wire:model="dados.college_garage">
-            Garagem para o veículo na faculdade?
-        </x-mary-toggle>
 
-        <x-mary-toggle wire:model="dados.is_travel_car" name="dados.is_travel_car">
-            Viaja com o veículo?
-        </x-mary-toggle>
+                <x-mary-input wire:loading.attr="disabled" type="text" label="Complemento"
+                    name="dados.endereco_complemento" wire:model="dados.endereco_complemento" />
 
-        <x-mary-toggle wire:model="dados.drivers_under_26_years_old">
-            Existem condutores menores de 26 anos para o veículo?
-        </x-mary-toggle>
+                <x-mary-input wire:loading.attr="disabled" type="text" label="Bairro" name="dados.endereco_bairro"
+                    wire:model="dados.endereco_bairro" required />
 
-        <x-mary-toggle wire:model="dados.have_accident" name="dados.have_accident">
-            Teve sinistro?
-        </x-mary-toggle>
+                <x-mary-input wire:loading.attr="disabled" type="text" label="Cidade" name="dados.endereco_cidade"
+                    wire:model="dados.endereco_cidade" />
 
-        <x-mary-toggle wire:model="dados.funded" name="dados.funded">
-            O veículo é financiado?
-        </x-mary-toggle>
+                <x-mary-input wire:loading.attr="disabled" type="text" label="Estado" name="dados.endereco_uf"
+                    wire:model="dados.endereco_uf" />
+            </fieldset>
 
-        <x-mary-button class="btn-primary" label="Avançar" on-back-click="$set('step', 3)" />
+            <x-mary-input label="Condutor Principal do Veículo (quem dirige 85% do tempo)?"
+                name="dados.main_vehicle_driver" wire:model="dados.main_vehicle_driver" />
 
-    </x-mary-step>
+            <x-mary-button class="btn-primary" label="Avançar" wire:click="proximoPasso" />
+        </x-mary-step>
 
-    <x-mary-step text="" :step="5" theme="outlined-var" wire:submit.prevent="toStep6"
-        class="space-y-6" wire:key="step-5">
+        <x-mary-step text="" :step="4" class="grid space-y-6" wire:submit="toStep5"
+            wire:key="step-4">
 
-        <div>
-            <strong class="text-sm block">Como Deseja Enviar as Informações do Veículo?</strong>
-            <x-radio wire:model.live="useAttachement" name="useAttachement" :value="1">
-                Anexar arquivo
-            </x-radio>
-            <x-radio wire:model.live="useAttachement" name="useAttachement" :value="0">
-                Preencher os Dados
-            </x-radio>
-        </div>
+            <x-mary-toggle name="dados.work_garage" wire:model="dados.garagem_trabalho"
+                label="Garagem para o veículo no trabalho?" />
 
-        @if (false)
-            <div wire:key="upload">
-                {{-- <x-layout.upload-box title="Selecionar Anexo" name="file" wire:model="file" /> --}}
-            </div>
-        @else
-            <div class="grid lg:grid-cols-2 gap-8" wire:key="manual-form">
-                <x-mary-input required type="number" min="1990" max="{!! date('Y') !!}"
-                    label="Ano fabricação" wire:model='dados.manufacture_year' name="dados.manufacture_year'" />
-                <x-mary-input required type="number" min="1990" max="{!! date('Y') !!}"
-                    label="Ano modelo" wire:model="dados.model_year" name="dados.model_year" />
-                <x-mary-input label="Modelo" wire:model="dados.model" name="dados.model" />
-                <x-mary-input required label="Placa" wire:model="dados.license_plate" x-mask="aaa-9*99"
-                    name="dados.license_plate" />
-            </div>
-        @endif
+            <x-mary-toggle name="dados.garagem_residencial" wire:model.live="dados.garagem_residencial"
+                label="Garagem para o veículo na residência?" />
 
-        {{-- <x-mary-input label="Chassi" wire:model="dados.chassis" name="dados.chassis" /> --}}
+            <template x-if="$wire.get('dados.garagem_residencial')">
+                <div>
 
-        <x-mary-button class="btn-primary" label="Avançar" on-back-click="$set('step', 4)" />
-    </x-mary-step>
+                    <x-mary-group class="checked:!btn-primary" option-value="id" option-label="name"
+                        :options="[['id' => 'C', 'name' => 'Casa'], ['id' => 'A', 'name' => 'Apartamento']]" wire:model="dados.casa_ou_apartamento" label="Casa ou Apartamento?"
+                        name="dados.casa_ou_apartamento" />
+                </div>
+            </template>
 
-</x-mary-steps>
+            <x-mary-toggle name="dados.garagem_faculdade" wire:model="dados.garagem_faculdade"
+                label="Garagem para o veículo na faculdade?" />
+
+            <x-mary-toggle wire:model="dados.viaja_com_veiculo" name="dados.viaja_com_veiculo"
+                label=" Viaja com o veículo?" />
+
+            <x-mary-toggle wire:model="dados.condutores_menores_26_anos"
+                label="Existem condutores menores de 26 anos para o veículo?" />
+
+            <x-mary-toggle wire:model="dados.teve_sinistro" name="dados.teve_sinistro" label="Teve sinistro?" />
+            <x-mary-toggle wire:model="dados.veiculo_financiado" name="dados.veiculo_financiado"
+                label="O veículo é financiado?" />
+
+            <x-mary-button class="btn-primary" label="Avançar" wire:click="proximoPasso" />
+
+        </x-mary-step>
+
+        <x-mary-step text="" :step="5" wire:submit.prevent="toStep6" class="space-y-6">
+
+            <x-mary-group wire:model.live="dados.usar_anexo" label="Como Deseja Enviar as Informações do Veículo?"
+                :options="[['id' => 1, 'name' => 'Enviar Anexo'], ['id' => 0, 'name' => 'Preencher Dados']]" />
+
+            <template x-if="1 == $wire.get('dados.usar_anexo')">
+                <div wire:key="upload">
+                    <x-mary-file wire:model="arquivos.anexo" label="Anexo" accept="application/pdf,image/*" />
+
+                </div>
+            </template>
+            <template x-if="0 == $wire.get('dados.usar_anexo')">
+                <div class="grid lg:grid-cols-2 gap-8" wire:key="manual-form">
+                    <x-mary-input required type="number" min="1990" max="{!! date('Y') !!}"
+                        label="Ano fabricação" wire:model='dados.ano_fabricacao' />
+                    <x-mary-input required type="number" min="1990" max="{!! date('Y') !!}"
+                        label="Ano modelo" wire:model="dados.ano_modelo" />
+                    <x-mary-input label="Modelo" wire:model="dados.modelo" />
+                    <x-mary-input required label="Placa" wire:model="dados.placa" x-mask="aaa-9*99" />
+                </div>
+            </template>
+            <x-mary-button class="btn-primary" label="Concluir" wire:click="proximoPasso" />
+        </x-mary-step>
+    </x-mary-steps>
+    <x-mary-modal wire:model="sucesso" title="Hey" class="backdrop-blur">
+        Press `ESC`, click outside or click `CANCEL` to close.
+
+        <x-slot:actions>
+            <x-button label="Cancel" @click="$wire.myModal1 = false" />
+        </x-slot:actions>
+    </x-mary-modal>
+</div>
+
+@script
+    <script>
+        $js('pesquisarCep', async (value) => {
+
+            const cep = value.replace(/\D+/g, '');
+
+            const response = await fetch(`https://viacep.com.br/ws/${cep}/json`);
+            const result = await response.json()
+
+            $wire.set('dados.endereco_logradouro', result.logradouro)
+            $wire.set('dados.endereco_bairro', result.bairro);
+            $wire.set('dados.endereco_cidade', result.localidade);
+            $wire.set("dados.endereco_uf", result.uf);
+        })
+    </script>
+@endscript

@@ -2,48 +2,51 @@
 
 namespace TglInova\Forms\Livewire\Components;
 
+
 use TglInova\Forms\Models\Formulario;
 
 trait HasFormulario
 {
     public Formulario $formulario;
 
-    protected function getRuleFromStep(int $step): array
+    public $sucesso = false;
+
+    protected function getRuleFromStep(int $step): ?array
     {
-        return $this->groupedRules()[$step];
-    }
-
-    protected function groupedRules(): array
-    {
-        return [
-            1 => [
-                'dados.nome'    => ['required', 'string', 'max:200'],
-                'dados.cpf'     => ['required', 'cpf'],
-                'dados.celular' => ['nullable', 'celular_com_ddd'],
-                'dados.telefone' => ['nullable', 'telefone_com_ddd']
-            ],
-
-            2 => [
-
-            ]
-        ];
+        return null;
     }
 
     public function proximoPasso()
     {
         $rules = $this->getRuleFromStep($this->passo);
 
-        // dd($this->dados);
+        is_array($rules) && count($rules) > 0 && $this->validate($rules);
 
-        $this->validate($rules);
-
-        $this->passo += 1;
+        if ($this->passo === $this->ultimoPasso) {
+            $this->salvar();
+        } else {
+            $this->passo += 1;
+        }
     }
 
     public function salvar()
     {
+        $dados = $this->dados;
+
+        if (property_exists($this, 'arquivos')) {
+            foreach ($this->arquivos as $key => $arquivo) {
+                $dados['arquivos'][$key] = $arquivo?->store('formularios');
+            }
+        }
+
         $this->formulario->respostas()->create([
-            'dados' => $this->dados
+            'dados' => $dados
         ]);
+
+        $this->sucesso = true;
+
+        if (property_exists($this, 'passo')) {
+            $this->reset('passo', 'dados', 'arquivos');
+        }
     }
 }

@@ -3,18 +3,44 @@
 namespace TglInova\Forms\Livewire\Components;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use Illuminate\Validation\Rule;
+use TglInova\Forms\Enums\EstadoCivil;
 
-class SeguroAuto extends Component
+class SeguroAuto extends FormularioBase
 {
-    use HasFormulario;
+    use WithFileUploads;
 
     public array $dados = ['nome' => '', 'cpf' => ''];
+    public array $arquivos = ['anexo' => null];
 
-    public $passo = 2;
+    public int $passo = 1;
 
-    public function submit()
+    public int $ultimoPasso = 5;
+
+    public function validacaoPasso(): array
     {
-        $this->salvar();
+        return match($this->passo) {
+            1 => [
+                'dados.nome'     => ['required', 'string', 'max:200'],
+                'dados.cpf'      => ['required', 'cpf'],
+                'dados.celular'  => ['nullable', 'celular_com_ddd'],
+                'dados.telefone' => ['nullable', 'telefone_com_ddd']
+            ],
+
+            2 => [
+                'dados.data_nascimento' => ['required', 'date'],
+                'dados.estado_civil'    => [Rule::enum(EstadoCivil::class)]
+            ],
+
+            3 => [],
+
+            4 => [],
+
+            5 => [
+                'dados.ano_fabricacao' => ['required']
+            ]
+        };
     }
 
     public function render()
