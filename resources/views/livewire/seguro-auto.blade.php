@@ -25,9 +25,8 @@
         <x-mary-step text="" :step="2" class="space-y-6" wire:submit.prevent="toStep3()"
             wire:key="step-2">
 
-            <x-mary-input required type="text" label="Qual é a sua Data de Nascimento?"
-                wire:model="dados.data_nascimento" x-mask="99/99/9999" maxlength="10" name="dados.data_nascimento"
-                icon="heroicon.o-calendar" />
+            <x-mary-input required type="date" label="Qual é a sua Data de Nascimento?"
+                wire:model="dados.data_nascimento" name="dados.data_nascimento" icon="heroicon.o-calendar" />
 
             <div>
                 <div class="font-bold text-sm">

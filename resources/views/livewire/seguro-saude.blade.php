@@ -20,7 +20,7 @@
                                     label="Nome do Titular" required />
                             </div>
                             <x-mary-input wire:model="dados.beneficiarios.{{ $key }}.data_nascimento"
-                                label="Data de Nascimento" required placeholder="DD/MM/AAAA" x-mask="99/99/9999" />
+                                label="Data de Nascimento" required type="date" />
                         </div>
                     </div>
                 @endforeach

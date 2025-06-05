@@ -7,6 +7,7 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components as Fc;
+use Filament\Tables\Columns\TextColumn;
 use TglInova\Forms\Models\Formulario;
 use Tglinova\Forms\Filament\Resources\FormularioResource\Pages;
 
@@ -18,7 +19,7 @@ class FormularioResource extends Resource
 
     protected static ?int $navigationSort = 10;
 
-    protected static ?string $modelLabel = 'Fichas';
+    protected static ?string $modelLabel = 'Ficha';
 
     public static function form(Form $form): Form
     {
@@ -35,8 +36,8 @@ class FormularioResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nome')
-                    ->searchable(),
+                TextColumn::make('nome')->searchable(),
+                TextColumn::make('respostas_count')->counts('respostas')->badge()->label('Fichas Preenchidas'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
