@@ -30,6 +30,7 @@ class FormularioSeeder extends Seeder
                 'nome' => 'Seguro Condomínio',
                 'descricao' => '',
                 'componente' => \TglInova\Forms\Livewire\Components\SeguroCondominio::class,
+                'apresentador' => \TglInova\Forms\Filament\Presenters\SeguroCondominio::class
             ]
         ];
 

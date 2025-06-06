@@ -2,17 +2,18 @@
 
 namespace TglInova\Forms\Filament\Resources\FormularioResource\Pages;
 
-use Filament\Actions\Action;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Filament\Actions\Action;
 use Filament\Infolists\Infolist;
+use TglInova\Forms\Models\Formulario;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Infolists\Components as Ic;
-use Filament\Resources\Pages\ManageRelatedRecords;
 use Illuminate\Contracts\Support\Htmlable;
+use Filament\Resources\Pages\ManageRelatedRecords;
 use Tglinova\Forms\Filament\Resources\FormularioResource;
-use TglInova\Forms\Models\Formulario;
 
 class ManageRespostas extends ManageRelatedRecords
 {
@@ -49,8 +50,10 @@ class ManageRespostas extends ManageRelatedRecords
 
             $schema = [];
 
-            foreach (Arr::dot($record->dados) as $key) {
-                $schema[] = Ic\TextEntry::make('dados.' . $key);
+            foreach (Arr::dot($record->dados) as $key => $value) {
+
+                $schema[] = Ic\TextEntry::make('dados.' . $key)
+                                ->label(Str::headline($key))->placeholder('Não Informado');
             }
 
             return $schema;
@@ -69,8 +72,8 @@ class ManageRespostas extends ManageRelatedRecords
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make()->slideOver(),
                 Tables\Actions\DeleteAction::make(),
-                Tables\Actions\ViewAction::make()->slideOver()
             ]);
 
         if ($this->record->apresentador) {
