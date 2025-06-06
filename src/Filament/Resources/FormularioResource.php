@@ -1,6 +1,6 @@
 <?php
 
-namespace Tglinova\Forms\Filament\Resources;
+namespace TglInova\Forms\Filament\Resources;
 
 use Filament\Tables;
 use Filament\Forms\Form;

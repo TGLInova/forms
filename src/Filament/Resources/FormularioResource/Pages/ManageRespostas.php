@@ -1,7 +1,8 @@
 <?php
 
-namespace Tglinova\Forms\Filament\Resources\FormularioResource\Pages;
+namespace TglInova\Forms\Filament\Resources\FormularioResource\Pages;
 
+use Filament\Actions\Action;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Arr;
@@ -20,6 +21,13 @@ class ManageRespostas extends ManageRelatedRecords
     protected static string $relationship = 'respostas';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            Action::make('visualizar_pagina')->label('Visualizar Página')->url(fn () => $this->record->url, true),
+        ];
+    }
 
     public function getTitle(): string|Htmlable
     {

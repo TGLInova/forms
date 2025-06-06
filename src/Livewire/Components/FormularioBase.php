@@ -27,6 +27,11 @@ abstract class FormularioBase extends Component
         };
     }
 
+    public function passoAnterior()
+    {
+        $this->passo = max(1, $this->passo - 1);
+    }
+
     public function proximoPasso()
     {
         $rules = $this->validacaoPasso($this->passo);

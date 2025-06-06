@@ -2,7 +2,6 @@
 
 namespace TglInova\Forms\Livewire\Components;
 
-use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Validation\Rule;
 use TglInova\Forms\Enums\EstadoCivil;
@@ -29,10 +28,17 @@ class SeguroAuto extends FormularioBase
 
             2 => [
                 'dados.data_nascimento' => ['required', 'date'],
-                'dados.estado_civil'    => [Rule::enum(EstadoCivil::class)]
+                'dados.estado_civil'    => [Rule::enum(EstadoCivil::class)],
+                'dados.profissao'       => ['nullable', 'string'],
             ],
 
-            3 => [],
+            3 => [
+                'dados.endereco_cep'         => ['required'],
+                'dados.endereco_logradouro'  => ['required', 'string'],
+                'dados.endereco_numero'      => ['nullable'],
+                'dados.endereco_complemento' => ['nullable'],
+                'dados.endereco_bairro'      => ['required', 'string'],
+            ],
 
             4 => [],
 

@@ -1,5 +1,5 @@
 <?php
-namespace Tglinova\Forms\Filament\Presenters;
+namespace TglInova\Forms\Filament\Presenters;
 
 use Filament\Infolists\Infolist;
 use Filament\Tables\Table;

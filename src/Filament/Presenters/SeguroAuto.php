@@ -1,6 +1,6 @@
 <?php
 
-namespace Tglinova\Forms\Filament\Presenters;
+namespace TglInova\Forms\Filament\Presenters;
 
 use Filament\Infolists\Components\Fieldset;
 use Filament\Infolists\Components\TextEntry;

@@ -20,11 +20,19 @@ class Formulario extends Model
 
     public function slug(): Attribute
     {
-        return Attribute::make(get: fn () => Str::slug($this->nome));
+        return Attribute::make(get: fn() => Str::slug($this->nome));
     }
 
     public function respostas()
     {
         return $this->hasMany(FormularioResposta::class);
+    }
+
+    public function url(): Attribute
+    {
+        return Attribute::make(get: fn() => route('tglinova-forms.show', [
+            'formulario' => $this,
+            'slug' => $this->slug
+        ]));
     }
 }

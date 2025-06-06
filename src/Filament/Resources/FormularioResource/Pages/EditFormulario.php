@@ -1,6 +1,6 @@
 <?php
 
-namespace Tglinova\Forms\Filament\Resources\FormularioResource\Pages;
+namespace TglInova\Forms\Filament\Resources\FormularioResource\Pages;
 
 use App\Filament\Resources\FormularioQuestaoResource\Pages\EditFormularioQuestao;
 use Tglinova\Forms\Filament\Resources\FormularioResource;;

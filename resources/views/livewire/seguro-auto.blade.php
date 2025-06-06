@@ -19,11 +19,9 @@
             <x-mary-input type="email" required placeholder='E-mail' wire:model="dados.email" name="dados.email"
                 icon="heroicon.o-envelope" />
 
-            <x-mary-button class="btn-primary" label="Avançar" wire:click="proximoPasso" />
         </x-mary-step>
 
-        <x-mary-step text="" :step="2" class="space-y-6" wire:submit.prevent="toStep3()"
-            wire:key="step-2">
+        <x-mary-step text="" :step="2" class="space-y-6" wire:submit.prevent="toStep3()">
 
             <x-mary-input required type="date" label="Qual é a sua Data de Nascimento?"
                 wire:model="dados.data_nascimento" name="dados.data_nascimento" icon="heroicon.o-calendar" />
@@ -39,14 +37,11 @@
 
             <x-mary-input maxlength="25" required wire:model="dados.profissao" label="Qual é a sua Profissão?" />
 
-            <x-mary-button class="btn-primary" label="Avançar" wire:click="proximoPasso" />
-
         </x-mary-step>
 
-        <x-mary-step text="" :step="3" class="space-y-6" wire:submit.prevent="toStep4()"
-            wire:key="step-3" wire:transition.opacity.duration.800ms>
+        <x-mary-step text="" :step="3" class="space-y-6" wire:submit.prevent="toStep4()">
 
-            <fieldset class="grid lg:grid-cols-4 gap-4">
+            <fieldset class="grid lg:grid-cols-4 gap-6">
                 <div>
                     <x-mary-input x-on:change="$event.target.value && $js.pesquisarCep($event.target.value)"
                         label="CEP" wire:model="dados.endereco_cep" x-mask="99.999-999" required />
@@ -75,12 +70,9 @@
 
             <x-mary-input label="Condutor Principal do Veículo (quem dirige 85% do tempo)?"
                 name="dados.main_vehicle_driver" wire:model="dados.main_vehicle_driver" />
-
-            <x-mary-button class="btn-primary" label="Avançar" wire:click="proximoPasso" />
         </x-mary-step>
 
-        <x-mary-step text="" :step="4" class="grid space-y-6" wire:submit="toStep5"
-            wire:key="step-4">
+        <x-mary-step text="" :step="4" class="space-y-6" >
 
             <x-mary-toggle name="dados.work_garage" wire:model="dados.garagem_trabalho"
                 label="Garagem para o veículo no trabalho?" />
@@ -110,8 +102,6 @@
             <x-mary-toggle wire:model="dados.veiculo_financiado" name="dados.veiculo_financiado"
                 label="O veículo é financiado?" />
 
-            <x-mary-button class="btn-primary" label="Avançar" wire:click="proximoPasso" />
-
         </x-mary-step>
 
         <x-mary-step text="" :step="5" wire:submit.prevent="toStep6" class="space-y-6">
@@ -135,10 +125,10 @@
                     <x-mary-input required label="Placa" wire:model="dados.placa" x-mask="aaa-9*99" />
                 </div>
             </template>
-            <x-mary-button class="btn-primary" label="Concluir" wire:click="proximoPasso" />
         </x-mary-step>
     </x-mary-steps>
 
+    <x-tglinova-forms::form-actions />
     <x-tglinova-forms::success-message wire:model="sucesso" />
 </div>
 

@@ -2,9 +2,6 @@
 
 namespace TglInova\Forms\Livewire\Components;
 
-use Livewire\Attributes\Computed;
-use Livewire\Component;
-
 class SeguroSaude extends FormularioBase
 {
     public int $passo = 1;

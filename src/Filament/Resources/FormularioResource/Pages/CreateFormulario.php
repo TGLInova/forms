@@ -1,6 +1,6 @@
 <?php
 
-namespace Tglinova\Forms\Filament\Resources\FormularioResource\Pages;
+namespace TglInova\Forms\Filament\Resources\FormularioResource\Pages;
 
 use Tglinova\Forms\Filament\Resources\FormularioResource;
 use Filament\Resources\Pages\CreateRecord;
