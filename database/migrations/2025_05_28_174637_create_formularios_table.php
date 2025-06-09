@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('formularios', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 200);
-            $table->string('descricao', 400)->nullable();
+            $table->text('descricao')->nullable();
             $table->string('componente', 100)->nullable();
             $table->string('apresentador', 100)->nullable();
             $table->timestamps();
