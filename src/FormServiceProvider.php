@@ -12,10 +12,11 @@ use TglInova\Forms\Livewire\Components;
 class FormServiceProvider extends ServiceProvider
 {
     protected array $components = [
-        'seguro-saude'      => Components\SeguroSaude::class,
-        'seguro-auto'       => Components\SeguroAuto::class,
-        'seguro-condominio' => Components\SeguroCondominio::class,
-        'seguro-residencial' => Components\SeguroResidencial::class,
+        'seguro-saude'          => Components\SeguroSaude::class,
+        'seguro-auto'           => Components\SeguroAuto::class,
+        'seguro-condominio'     => Components\SeguroCondominio::class,
+        'seguro-residencial'    => Components\SeguroResidencial::class,
+        'seguro-viagem'         => Components\SeguroViagem::class,
     ];
 
     public function boot()

@@ -51,6 +51,15 @@ class FormularioSeeder extends Seeder
                 HTML,
                 'componente' => \TglInova\Forms\Livewire\Components\SeguroResidencial::class,
                 'apresentador' => \TglInova\Forms\Filament\Presenters\SeguroResidencial::class
+            ],
+
+            5 => [
+                'nome' => 'Seguro Viagem',
+                'descricao' => <<<HTML
+                    <p>Através deste formulário online, você poderá solicitar a sua cotação de seguro de forma rápida e segura, sem precisar se deslocar até o nosso escritório. Preencha todos os campos com atenção e informe os dados da sua viagem e seus dados pessoais.</p>
+                HTML,
+                'componente'   => \TglInova\Forms\Livewire\Components\SeguroViagem::class,
+                'apresentador' => \TglInova\Forms\Filament\Presenters\SeguroViagem::class
             ]
         ];
 
