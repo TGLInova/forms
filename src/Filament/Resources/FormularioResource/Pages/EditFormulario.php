@@ -3,7 +3,7 @@
 namespace TglInova\Forms\Filament\Resources\FormularioResource\Pages;
 
 use App\Filament\Resources\FormularioQuestaoResource\Pages\EditFormularioQuestao;
-use Tglinova\Forms\Filament\Resources\FormularioResource;;
+use TglInova\Forms\Filament\Resources\FormularioResource;;
 use Filament\Actions;
 use Filament\Navigation\NavigationItem;
 use Filament\Resources\Pages\EditRecord;

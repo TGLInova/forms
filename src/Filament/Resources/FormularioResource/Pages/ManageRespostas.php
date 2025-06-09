@@ -13,7 +13,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Infolists\Components as Ic;
 use Illuminate\Contracts\Support\Htmlable;
 use Filament\Resources\Pages\ManageRelatedRecords;
-use Tglinova\Forms\Filament\Resources\FormularioResource;
+use TglInova\Forms\Filament\Resources\FormularioResource;
 
 class ManageRespostas extends ManageRelatedRecords
 {

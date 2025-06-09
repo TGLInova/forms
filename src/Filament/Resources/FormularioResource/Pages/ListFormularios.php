@@ -2,7 +2,7 @@
 
 namespace TglInova\Forms\Filament\Resources\FormularioResource\Pages;
 
-use Tglinova\Forms\Filament\Resources\FormularioResource;
+use TglInova\Forms\Filament\Resources\FormularioResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
