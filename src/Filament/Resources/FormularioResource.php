@@ -27,7 +27,7 @@ class FormularioResource extends Resource
             ->columns(1)
             ->schema([
                 Fc\TextInput::make('nome')->required(),
-                Fc\Textarea::make('descricao')->label('Descrição')->columnSpanFull(),
+                Fc\RichEditor::make('descricao')->label('Descrição')->columnSpanFull()->disableToolbarButtons(['attachFiles']),
                 // Fc\Hidden::make('componente')
             ]);
     }
