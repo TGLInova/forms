@@ -28,9 +28,17 @@ class FormularioSeeder extends Seeder
 
             3 => [
                 'nome' => 'Seguro Condomínio',
-                'descricao' => '',
+                'descricao' => <<<HTML
+                    <p>Proteja o Seu Lar e o Seu Patrimônio</p>
+                    <p>
+                    Através deste formulário online, você poderá solicitar a sua cotação de seguro de forma rápida e segura, sem precisar se deslocar até o nosso escritório. Preencha todos os campos com atenção e informe os dados do seu condomínio.</p>
+                HTML,
                 'componente' => \TglInova\Forms\Livewire\Components\SeguroCondominio::class,
                 'apresentador' => \TglInova\Forms\Filament\Presenters\SeguroCondominio::class
+            ],
+
+            4 => [
+                
             ]
         ];
 

@@ -9,7 +9,7 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components as Fc;
 use Filament\Tables\Columns\TextColumn;
 use TglInova\Forms\Models\Formulario;
-use Tglinova\Forms\Filament\Resources\FormularioResource\Pages;
+use TglInova\Forms\Filament\Resources\FormularioResource\Pages;
 
 class FormularioResource extends Resource
 {
