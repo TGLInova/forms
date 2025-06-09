@@ -38,7 +38,19 @@ class FormularioSeeder extends Seeder
             ],
 
             4 => [
-                
+                'nome' => 'Seguro Residencial',
+                'descricao' => <<<HTML
+                    <p>
+                        Você está pronto para proteger o seu lar com o Seguro Residencial?
+                    </p>
+                    <p>
+                        Através deste formulário online, você poderá solicitar a sua cotação de seguro de forma rápida e segura, sem
+                        precisar se deslocar até o nosso escritório. Preencha todos os campos com atenção e informe os dados do seu
+                        imóvel e seus bens.
+                    </p>
+                HTML,
+                'componente' => \TglInova\Forms\Livewire\Components\SeguroResidencial::class,
+                'apresentador' => \TglInova\Forms\Filament\Presenters\SeguroResidencial::class
             ]
         ];
 

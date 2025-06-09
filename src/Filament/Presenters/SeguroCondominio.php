@@ -37,7 +37,9 @@ class SeguroCondominio implements Presenter
                 TextEntry::make('quantidade_vagas')->label('Quantidade de Vagas'),
                 TextEntry::make('valor_imovel')->money('BRL'),
                 TextEntry::make('idade_imovel'),
-            ])
+            ]),
+
+
         ]);
     }
 }
