@@ -15,6 +15,7 @@ class EditFormulario extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
+            Actions\Action::make('visualizar_pagina')->label('Visualizar Página')->outlined()->url(fn() => $this->record->url, true),
             Actions\DeleteAction::make(),
         ];
     }

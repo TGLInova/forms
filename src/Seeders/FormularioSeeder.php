@@ -12,14 +12,26 @@ class FormularioSeeder extends Seeder
         $formularios = [
             1 => [
                 'nome' => 'Seguro Auto',
-                'descricao' => "Dirija com Tranquilidade e Segurança.\n\nAtravés deste formulário online, você poderá solicitar a sua cotação de seguro de forma rápida e segura, sem precisar se deslocar até o nosso escritório. Preencha todos os campos com atenção e informe os dados do seu veículo e seus dados pessoais.",
+                'descricao' => <<<HTML
+                    <p>Dirija com Tranquilidade e Segurança.</p>
+                    <p>Através deste formulário online, você poderá solicitar a sua cotação de seguro de forma rápida e segura, sem precisar se deslocar até o nosso escritório.</p>
+                    <p>Preencha todos os campos com atenção e informe os dados do seu veículo e seus dados pessoais.</p>
+                HTML,
                 'componente' => \TglInova\Forms\Livewire\Components\SeguroAuto::class,
                 'apresentador' => \TglInova\Forms\Filament\Presenters\SeguroAuto::class,
             ],
             2 => [
                 'nome' => 'Seguro Saúde',
                 'descricao' => <<<HTML
-                    Para garantir uma conversa mais direta e alinhada com o que você realmente precisa, pedimos que preencha este formulário com algumas informações básicas sobre os beneficiários que farão parte da proposta.\n\nEssas informações permitirão que nossa especialista compreenda melhor o seu perfil e indique as opções de seguro saúde mais compatíveis com sua realidade e expectativas.\n\nSinta-se à vontade para responder com calma. Todos os dados serão mantidos em sigilo absoluto e utilizados apenas para fins de atendimento personalizado.
+                     <p>
+                        Para garantir uma conversa mais direta e alinhada com o que você realmente precisa, pedimos que preencha este formulário com algumas informações básicas sobre os beneficiários que farão parte da proposta.
+                    </p>
+                    <p>
+                        Essas informações permitirão que nossa especialista compreenda melhor o seu perfil e indique as opções de seguro saúde mais compatíveis com sua realidade e expectativas.
+                    </p>
+                    <p>
+                        Sinta-se à vontade para responder com calma. Todos os dados serão mantidos em sigilo absoluto e utilizados apenas para fins de atendimento personalizado.
+                    </p>
                 HTML,
                 'componente' => \TglInova\Forms\Livewire\Components\SeguroSaude::class,
                 'apresentador' => \TglInova\Forms\Filament\Presenters\SeguroSaude::class,
@@ -60,6 +72,16 @@ class FormularioSeeder extends Seeder
                 HTML,
                 'componente'   => \TglInova\Forms\Livewire\Components\SeguroViagem::class,
                 'apresentador' => \TglInova\Forms\Filament\Presenters\SeguroViagem::class
+            ],
+
+            6 => [
+                'nome' => 'Seguro Empresarial',
+                'descricao' => <<<HTML
+                    <p>Preencha seus dados e contrate <strong>Online</strong> seu seguro empresarial!</p>
+                HTML,
+                'componente'   => \TglInova\Forms\Livewire\Components\SeguroEmpresarial::class,
+
+                'apresentador' => \TglInova\Forms\Filament\Presenters\SeguroEmpresarial::class,
             ]
         ];
 

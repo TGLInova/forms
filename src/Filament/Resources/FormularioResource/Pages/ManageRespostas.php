@@ -23,10 +23,20 @@ class ManageRespostas extends ManageRelatedRecords
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public function getBreadcrumbs(): array
+    {
+        return [
+            FormularioResource::getUrl('index') => FormularioResource::getPluralModelLabel(),
+            FormularioResource::getUrl('edit', ['record' => $this->record]) => $this->record->nome,
+            'Respostas'
+        ];
+    }
+
+
     protected function getHeaderActions(): array
     {
         return [
-            Action::make('visualizar_pagina')->label('Visualizar Página')->url(fn () => $this->record->url, true),
+            Action::make('visualizar_pagina')->label('Visualizar Página')->url(fn() => $this->record->url, true),
         ];
     }
 
@@ -53,7 +63,7 @@ class ManageRespostas extends ManageRelatedRecords
             foreach (Arr::dot($record->dados) as $key => $value) {
 
                 $schema[] = Ic\TextEntry::make('dados.' . $key)
-                                ->label(Str::headline($key))->placeholder('Não Informado');
+                    ->label(Str::headline($key))->placeholder('Não Informado');
             }
 
             return $schema;
@@ -72,8 +82,10 @@ class ManageRespostas extends ManageRelatedRecords
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make()->slideOver(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\ViewAction::make()->slideOver()->modalHeading('Informações da Ficha')->modalIcon('heroicon-o-information-circle'),
+                    Tables\Actions\DeleteAction::make(),
+                ])
             ]);
 
         if ($this->record->apresentador) {

@@ -17,6 +17,7 @@ class FormServiceProvider extends ServiceProvider
         'seguro-condominio'     => Components\SeguroCondominio::class,
         'seguro-residencial'    => Components\SeguroResidencial::class,
         'seguro-viagem'         => Components\SeguroViagem::class,
+        'seguro-empresarial'    => Components\SeguroEmpresarial::class,
     ];
 
     public function boot()

@@ -15,11 +15,13 @@ class FormularioResource extends Resource
 {
     protected static ?string $model = Formulario::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-numbered-list';
+    protected static ?string $navigationIcon = 'heroicon-o-chart-bar';
 
     protected static ?int $navigationSort = 10;
 
-    protected static ?string $modelLabel = 'Ficha';
+    protected static ?string $modelLabel = 'Ficha de Cotação';
+
+    protected static ?string $pluralModelLabel = 'Fichas de Cotação';
 
     public static function form(Form $form): Form
     {
