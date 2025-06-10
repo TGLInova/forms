@@ -2,5 +2,5 @@
 
 return [
     'prefix'       => 'tglinova-',
-    'route_prefix' => 'formulario',
+    'route_prefix' => 'ficha-cotacao',
 ];
