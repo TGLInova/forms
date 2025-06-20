@@ -26,7 +26,8 @@ class ManageRespostas extends ManageRelatedRecords
     public function getBreadcrumbs(): array
     {
         return [
-            FormularioResource::getUrl('index') => FormularioResource::getPluralModelLabel(),
+            FormularioResource::getPluralModelLabel(),
+            FormularioResource::getUrl('index') => 'Listar',
             FormularioResource::getUrl('edit', ['record' => $this->record]) => $this->record->nome,
             'Respostas'
         ];

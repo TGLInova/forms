@@ -37,6 +37,7 @@ class FormularioResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->recordUrl(fn ($record) => Pages\ManageRespostas::getUrl(['record' => $record]))
             ->columns([
                 TextColumn::make('nome')->searchable(),
                 TextColumn::make('respostas_count')->counts('respostas')->badge()->label('Fichas Preenchidas'),
