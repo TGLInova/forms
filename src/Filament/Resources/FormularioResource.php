@@ -41,10 +41,12 @@ class FormularioResource extends Resource
                 TextColumn::make('nome')->searchable(),
                 TextColumn::make('respostas_count')->counts('respostas')->badge()->label('Fichas Preenchidas'),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('Data de Criação')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Data de Atualização')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
