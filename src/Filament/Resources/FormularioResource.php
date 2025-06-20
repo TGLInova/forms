@@ -53,10 +53,17 @@ class FormularioResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('respostas')
-                    ->icon('heroicon-o-numbered-list')
-                    ->url(fn ($record) => Pages\ManageRespostas::getUrl(['record' => $record])),
+
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\Action::make('visualizar_pagina')
+                        ->label('Visualizar Página')
+                        ->icon('heroicon-o-share')
+                        ->url(fn($record) => $record->url, true),
+                    Tables\Actions\Action::make('respostas')
+                        ->icon('heroicon-o-numbered-list')
+                        ->url(fn ($record) => Pages\ManageRespostas::getUrl(['record' => $record])),
+                    Tables\Actions\EditAction::make(),
+                ])
             ]);
     }
 
