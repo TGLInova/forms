@@ -2,7 +2,7 @@
     <x-mary-steps wire:model="passo" steps-color="step-primary" stepper-classes="w-full mb-12">
         <x-mary-step text="" :step="1" class="space-y-4">
             <div class="grid">
-                <x-mary-group label='Você é uma pessoa física ou jurídica?' :options="[['id' => 'F', 'name' => 'Pessoa Física'], ['id' => 'J', 'name' => 'Pessoa Jurídica']]"
+                <x-mary-group data-label='Você é uma pessoa física ou jurídica?' :options="[['id' => 'F', 'name' => 'Pessoa Física'], ['id' => 'J', 'name' => 'Pessoa Jurídica']]"
                     wire:model="dados.tipo_pessoa" />
             </div>
 
